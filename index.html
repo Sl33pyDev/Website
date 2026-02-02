@@ -4,155 +4,381 @@
     <meta name="google-site-verification" content="6WBgqSPRDheL16UBGPW7qHxFQmQ7x0hsVZLyVi3OLiQ" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sl33py's Terminal</title>
+    <title>Sl33py's Terminal // System Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --bg-color: #050505;
+            --term-green: #8FC0E3; /* Primary Text */
+            --term-glow: #5CFFFF; /* Accents */
+            --panel-bg: rgba(17, 17, 17, 0.95);
+            --border-color: #00364D;
+        }
+
         body {
-            background-color: #0a0a0a;
-            color: #8FC0E3;
+            background-color: var(--bg-color);
+            color: var(--term-green);
             font-family: 'Share Tech Mono', monospace;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+            background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
         }
-        .music {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background-color: #111;
-            border: 1px solid #8FC0E3;
-            box-shadow: 0 0 15px #00364D;
+
+        /* Scanline Animation */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
         }
-        .music h2 {
-            margin-top: 0;
-            color: #8FC0E3;
-        }
+
         header {
             text-align: center;
-            padding: 2rem 1rem;
-            border-bottom: 2px solid #8FC0E3;
+            padding: 3rem 1rem 1rem;
+            border-bottom: 1px solid var(--term-glow);
+            box-shadow: 0 0 20px rgba(92, 255, 255, 0.2);
+            position: relative;
         }
+
         header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin: 0;
-            text-shadow: 0 0 10px #8FC0E3;
+            text-shadow: 0 0 10px var(--term-glow);
+            letter-spacing: 2px;
         }
+
+        /* Typing cursor effect */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1em;
+            background-color: var(--term-glow);
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #99E6FF;
             margin-top: 0.5rem;
+            opacity: 0.9;
         }
-        .intro, .projects, .profile, .comments {
+
+        /* Main Container Styling */
+        section {
             max-width: 900px;
             margin: 2rem auto;
-            padding: 1rem;
-            background-color: #111;
-            border: 1px solid #8FC0E3;
-            box-shadow: 0 0 15px #00364D;
+            padding: 1.5rem;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 15px rgba(0, 54, 77, 0.5);
+            border-radius: 4px;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .intro p, .projects p, .profile p {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #CCEEFF;
+
+        section:hover {
+            box-shadow: 0 0 25px rgba(92, 255, 255, 0.15);
+            border-color: var(--term-glow);
         }
-        .comments h2, .projects h2, .profile h2 {
+
+        h2 {
             margin-top: 0;
-            color: ##5CFFFF;
+            color: var(--term-glow);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 1.4rem;
         }
-        input, textarea {
-            width: 100%;
-            padding: 0.5rem;
-            margin: 0.5rem 0;
-            background: #000;
-            border: 1px solid ##5CFFFF;
-            color: #00E1FF;
-            font-family: 'Share Tech Mono', monospace;
+
+        /* Grid Layouts for Specs */
+        .grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
         }
-        button {
-            padding: 0.6rem 1.2rem;
-            background-color: ##5CFFFF;
-            color: #000;
+        
+        @media (max-width: 600px) {
+            .grid-list { grid-template-columns: 1fr; }
+        }
+
+        .grid-list li {
+            background: rgba(0, 54, 77, 0.2);
+            padding: 8px;
+            border-left: 2px solid var(--term-glow);
+        }
+
+        /* Project List Styling */
+        .project-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .project-list li {
+            background: rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .project-list li:hover {
+            border-color: var(--term-glow);
+            transform: translateX(5px);
+        }
+
+        /* Clickable Project Titles */
+        .project-link {
+            color: var(--term-green);
+            text-decoration: none;
             font-weight: bold;
-            border: none;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .project-link:hover {
+            color: var(--term-glow);
+            text-shadow: 0 0 8px var(--term-glow);
+            border-bottom: 1px solid var(--term-glow);
+        }
+
+        /* Studio Tags (Now Clickable) */
+        a.tag {
+            background-color: var(--border-color);
+            color: var(--term-glow);
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            margin-left: 8px;
+            border: 1px solid var(--term-glow);
+            vertical-align: middle;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
+            display: inline-block;
+        }
+
+        a.tag:hover {
+            background-color: var(--term-glow);
+            color: #050505;
+            box-shadow: 0 0 10px var(--term-glow);
             cursor: pointer;
         }
-        button:hover {
-            background-color: ##5CFFFF;
+        
+        /* Non-clickable tag fallback */
+        span.tag {
+            background-color: var(--border-color);
+            color: var(--term-glow);
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            margin-left: 8px;
+            border: 1px solid var(--term-glow);
+            vertical-align: middle;
         }
-        #secretBtn {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
+
+        /* Social Buttons */
+        .social-grid {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn-social {
+            text-decoration: none;
+            color: #000;
+            background-color: var(--term-glow);
+            padding: 0.8rem 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid var(--term-glow);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-social:hover {
             background-color: transparent;
-            color: #0a0a0a;
-            border: none;
-            font-size: 1px;
+            color: var(--term-glow);
+            box-shadow: 0 0 15px var(--term-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Brand Colors */
+        .discord-btn { background-color: #5865F2; border-color: #5865F2; color: white; }
+        .discord-btn:hover { color: #5865F2; background-color: transparent; box-shadow: 0 0 15px #5865F2; }
+
+        .youtube-btn { background-color: #FF0000; border-color: #FF0000; color: white; }
+        .youtube-btn:hover { color: #FF0000; background-color: transparent; box-shadow: 0 0 15px #FF0000; }
+        
+        .kofi-btn { background-color: #FF5E5B; border-color: #FF5E5B; color: white; }
+        .kofi-btn:hover { color: #FF5E5B; background-color: transparent; box-shadow: 0 0 15px #FF5E5B; }
+        
+        .email-btn { background-color: #20B2AA; border-color: #20B2AA; color: white; }
+        .email-btn:hover { color: #20B2AA; background-color: transparent; box-shadow: 0 0 15px #20B2AA; }
+
+        /* Footer Time */
+        .time-display {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: -10px;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Sl33py's Terminal</h1>
-        <p>glitchy, cozy, and coded with care.</p>
+        <h1>Sl33py's Terminal<span class="cursor">_</span></h1>
+        <p>Full Stack Developer | Custom PCB Designer | Cosplay Artist</p>
     </header>
 
+    <section class="connect" style="text-align: center;">
+        <h2>Establish Connection</h2>
+        <div class="social-grid">
+            <a href="https://discord.gg/gCkR7p8KG5" target="_blank" class="btn-social discord-btn">
+                <i class="fab fa-discord"></i> Join Discord
+            </a>
+            <a href="https://www.youtube.com/@Sl33py_Dev" target="_blank" class="btn-social youtube-btn">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="https://ko-fi.com/V7V41TGOXO" target="_blank" class="btn-social kofi-btn">
+                <i class="fas fa-mug-hot"></i> Support (Ko-fi)
+            </a>
+            <a href="mailto:sl33pydev@gmail.com" class="btn-social email-btn">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="https://linktr.ee/Sl33py_Dev" target="_blank" class="btn-social">
+                <i class="fas fa-link"></i> Linktree
+            </a>
+        </div>
+    </section>
+
     <section class="intro">
-        <p>Hello there! I'm Sl33py, a passionate beginner in the coding world, navigating the exciting realms of Python, JavaScript, and web development. This site is my little corner of the web — where I share my progress, projects, and digital experiments. Whether you're just passing through or looking to collaborate, welcome aboard!</p>
+        <h2>// Mission Statement</h2>
+        <p>System Online. Welcome to my portfolio. I am a developer and hardware engineer based in the Pacific Coast area. I blend software engineering (Java, C++) with physical hardware design (PCBs, Animatronics) and creative writing.</p>
+        <p>Currently enrolled in the <strong>Google Developer Premium Program</strong> and <strong>Boot.dev</strong>.</p>
     </section>
 
     <section class="profile">
-        <h2>About Me</h2>
-        <p><strong>Pronouns:</strong> He/Him</p>
-        <p><strong>Local Time:</strong> <span id="localTime"></span></p>
-        <p><strong>Languages:</strong></p>
-        <ul>
-            <li>Python — Beginner</li>
-            <li>JavaScript — Beginner</li>
-            <li>Lua — Intermediate</li>
-            <li>HTML/CSS — Beginner</li>
+        <div class="time-display">Local Time: <span id="localTime">Loading...</span></div>
+        <h2>// System Specs (About Me)</h2>
+        <p><strong>User:</strong> "Sl33py_Dev"<br>
+        <strong>Pronouns:</strong> He/Him</p>
+        
+        <h3>Languages</h3>
+        <ul class="grid-list">
+            <li>Java (Minecraft Modding Fabric/Forge)</li>
+            <li>Python & MPython</li>
+            <li>C++ & C#</li>
+            <li>JavaScript & Batch</li>
+        </ul>
+
+        <h3>Tools & Hardware</h3>
+        <ul class="grid-list">
+            <li><strong>IDE:</strong> IntelliJ, VS Code</li>
+            <li><strong>Git:</strong> GitHub, GitLab</li>
+            <li><strong>CAD:</strong> Fusion 360, Blender</li>
+            <li><strong>Eng:</strong> PCB Design, 3D Print</li>
+        </ul>
+    </section>
+
+    <section class="specs">
+        <h2>// Hardware Configuration (PC)</h2>
+        <ul class="grid-list">
+            <li><strong>CPU:</strong> Ryzen 5 5600</li>
+            <li><strong>GPU:</strong> MSI RTX 3060 12GB</li>
+            <li><strong>RAM:</strong> 32GB DDR4-3600 RGB</li>
+            <li><strong>Cooler:</strong> ID-COOLING Liquid</li>
+            <li><strong>SSD 1:</strong> 2TB Samsung 990 EVO+</li>
+            <li><strong>SSD 2:</strong> 512GB Sabrent Rocket</li>
+            <li><strong>MoBo:</strong> Asus PRIME B550-PLUS</li>
+            <li><strong>Case:</strong> Asus TUF GT502</li>
+            <li><strong>PSU:</strong> 1000W Gold Modular</li>
+            <li><strong>Mic:</strong> FIFINE T669</li>
+            <li><strong>Headphones:</strong> Audio-Technica ATH-M20x</li>
+            <li><strong>Display:</strong> AOC 24G4 (180 Hz)</li>
         </ul>
     </section>
 
     <section class="projects">
-        <h2>Current Projects</h2>
-        <p>- Building a roblox story game from scratch called Dead Shift</p>
-        <p>- Developing a Minecraft mod called <em>AeroLegion</em> that includes Magic.</p>
-        <p>- (i dont remember what else im doing right now)</em></p>
+        <h2>// Active Processes (Projects)</h2>
+        <ul class="project-list">
+            <li>
+                <a href="https://youtube.com/playlist?list=PLar8otDrQ_UdwIbmPXHeQsFwZYc0kdTun&si=ozwA1xLQ0-Vn7odL" target="_blank" class="project-link">
+                    MNaF (The Flipside)
+                </a> 
+                <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
+                <br>
+                <small>Main Mod Developer & Voice Actor.</small>
+            </li>
+            <li>
+                <strong style="font-size: 1.1rem;">Timelord Tales</strong> 
+                <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
+                <br>
+                <small>Main Mod Developer.</small>
+            </li>
+            <li>
+                <a href="https://youtube.com/playlist?list=PLpglIuWgsORG_42_OYNX0RPqHPEMdiS8d&si=O6f2JAPJGe6IAlYI" target="_blank" class="project-link">
+                    Fredbear and Friends
+                </a> 
+                <a href="https://youtube.com/@darkdogplayz3793?si=U5-Xx9KE0doy_Vf9" target="_blank" class="tag">Darkdogplayz</a>
+                <br>
+                <small>Main Mod Developer & Voice Actor.</small>
+            </li>
+            <li style="opacity: 0.7; border-style: dashed;">
+                <span style="font-size: 1.1rem;">[REDACTED]</span> 
+                <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
+                <br>
+                <small><em>3x Unannounced Projects currently in development (NDA/Hidden).</em></small>
+            </li>
+        </ul>
     </section>
 
     <section class="music">
-    <h2>Current Background Song (that is strange)</h2>
-    <iframe style="border-radius:12px" 
-        src="https://open.spotify.com/embed/track/560ChPSzgdQBUQ35ADGxDs?utm_source=generator" 
-        width="100%" height="152" frameborder="0" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
-    </iframe>
+        <h2>// Audio Stream :3</h2>
+        <iframe style="border-radius:12px" 
+            src="https://open.spotify.com/embed/track/1qJlt8JfqreKtKKyZ3sYxN?utm_source=generator" 
+            width="100%" height="152" frameborder="0" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+        </iframe>
     </section>
-    
-    <button id="secretBtn" onclick="window.location.href='admin.html'">.</button>
 
     <script>
         // Display Pacific Time (PT)
         function updatePacificTime() {
             const now = new Date();
-            // Convert to UTC
             let utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-            // PDT is UTC-7, PST is UTC-8
-            let pacificOffset = -7; // PDT default
+            // PDT (-7) / PST (-8) Logic
+            let pacificOffset = -7; 
             let month = now.getMonth();
-            if (month < 2 || month > 10) pacificOffset = -8; // PST
+            if (month < 2 || month > 10) pacificOffset = -8; 
+            
             let pacific = new Date(utc + (3600000 * pacificOffset));
             document.getElementById("localTime").textContent = pacific.toLocaleString('en-US', {
                 hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
             }) + ' PT';
         }
-        // ugh github wont publish
         setInterval(updatePacificTime, 1000);
         updatePacificTime();
     </script>
 </body>
 </html>
-
-
-
-
