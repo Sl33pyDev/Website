@@ -256,6 +256,32 @@
             box-shadow: 0 0 15px rgba(153,0,255,0.45);
         }
 
+        /* Hover Hint Text */
+        h2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hover-hint {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: var(--term-green);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            text-transform: none;
+            font-weight: normal;
+            letter-spacing: normal;
+        }
+
+        h2:hover .hover-hint {
+            opacity: 0.6;
+        }
+
         /* Footer Time */
         .time-display {
             text-align: right;
@@ -406,9 +432,11 @@
     </section>
 
     <section class="music">
-        <h2>// Audio Stream :3</h2>
+        <h2>// Audio Stream :3
+            <span class="hover-hint">When stuck, come here for a hint in the upcoming lore for one of the series I work on—or maybe a tease of a future project ;3</span>
+        </h2>
         <iframe style="border-radius:12px" 
-            src="https://open.spotify.com/embed/track/7x0HR74tq6i5zG3IyXmSH2?utm_source=generator" 
+            src="https://open.spotify.com/embed/track/0EaimQYtVqXWvDYVgpGEza?utm_source=generator" 
             width="100%" height="152" frameborder="0" 
             title="When stuck, come here for a hint in the upcoming lore for one of the series I work on—or maybe a tease of a future project ;3"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
