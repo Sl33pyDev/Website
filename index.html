@@ -10,11 +10,11 @@
     
     <style>
         :root {
-            --bg-color: #050505;
-            --term-green: #8FC0E3; /* Primary Text */
-            --term-glow: #5CFFFF; /* Accents */
-            --panel-bg: rgba(17, 17, 17, 0.95);
-            --border-color: #00364D;
+            --bg-color: #070006; /* very dark purple/near-black */
+            --term-green: #E6D9FF; /* soft lavender primary text */
+            --term-glow: #9900FF; /* calming soft purple accent */
+            --panel-bg: rgba(10, 3, 18, 0.95); /* deep purple panel */
+            --border-color: #330046; /* dark purple border */
         }
 
         body {
@@ -24,7 +24,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(6, 0, 30, 0.25) 50%), linear-gradient(90deg, rgba(153,0,255,0.04), rgba(153,0,255,0.02), rgba(153,0,255,0.04));
             background-size: 100% 2px, 3px 100%;
         }
 
@@ -47,7 +47,7 @@
             text-align: center;
             padding: 3rem 1rem 1rem;
             border-bottom: 1px solid var(--term-glow);
-            box-shadow: 0 0 20px rgba(92, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(153, 0, 255, 0.18);
             position: relative;
         }
 
@@ -71,7 +71,7 @@
 
         header p {
             font-size: 1.1rem;
-            color: #99E6FF;
+            color: #DCCBFF;
             margin-top: 0.5rem;
             opacity: 0.9;
         }
@@ -83,7 +83,7 @@
             padding: 1.5rem;
             background-color: var(--panel-bg);
             border: 1px solid var(--border-color);
-            box-shadow: 0 0 15px rgba(0, 54, 77, 0.5);
+            box-shadow: 0 0 15px rgba(51, 0, 77, 0.5);
             border-radius: 4px;
             position: relative;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -117,7 +117,7 @@
         }
 
         .grid-list li {
-            background: rgba(0, 54, 77, 0.2);
+            background: rgba(51, 0, 77, 0.12);
             padding: 8px;
             border-left: 2px solid var(--term-glow);
         }
@@ -237,23 +237,23 @@
 
         /* Commission Button */
         .btn-commission {
-            background-color: #28a745;
-            color: #000;
+            background-color: var(--term-glow);
+            color: #050505;
             padding: 0.5rem 1rem;
             text-decoration: none;
             font-weight: bold;
-            border: 1px solid #28a745;
+            border: 1px solid var(--term-glow);
             display: inline-block;
             margin-top: 10px;
             text-transform: uppercase;
             font-size: 0.9rem;
-            box-shadow: 0 0 5px #28a745;
+            box-shadow: 0 0 5px rgba(153,0,255,0.4);
             transition: all 0.3s ease;
         }
         .btn-commission:hover {
             background-color: transparent;
-            color: #28a745;
-            box-shadow: 0 0 15px #28a745;
+            color: var(--term-glow);
+            box-shadow: 0 0 15px rgba(153,0,255,0.45);
         }
 
         /* Footer Time */
@@ -269,7 +269,7 @@
 
     <header>
         <h1>Sl33py's Terminal<span class="cursor">_</span></h1>
-        <p>Full Stack Developer | Custom PCB Designer | Cosplay Artist</p>
+        <p>Full Stack Developer | Cosplay Artist</p>
     </header>
 
     <section class="connect" style="text-align: center;">
@@ -295,7 +295,7 @@
 
     <section class="intro">
         <h2>// Mission Statement</h2>
-        <p>System Online. Welcome to my portfolio. I am a developer and hardware engineer based in the Pacific Coast area. I blend software engineering (Java, C++) with physical hardware design (PCBs, Animatronics) and creative writing.</p>
+        <p>Welcome to my portfolio. I am a developer and hardware engineer. I blend software engineering (Java, C++) with physical hardware design (PCBs, Robotics) and Cosplaying.</p>
         <p>Currently enrolled in the <strong>Google Developer Premium Program</strong> and <strong>Boot.dev</strong>.</p>
     </section>
 
@@ -303,7 +303,7 @@
         <div class="time-display">Local Time: <span id="localTime">Loading...</span></div>
         <h2>// System Specs (About Me)</h2>
         <p><strong>User:</strong> "Sl33py_Dev"<br>
-        <strong>Pronouns:</strong> He/Him</p>
+        <strong>Pronouns:</strong> He/Him(Any Really)</p>
         
         <h3>Languages</h3>
         <ul class="grid-list">
@@ -311,6 +311,7 @@
             <li>Python & MPython</li>
             <li>C++ & C#</li>
             <li>JavaScript & Batch</li>
+            <li>HTML</li>
         </ul>
 
         <h3>Tools & Hardware</h3>
@@ -318,7 +319,7 @@
             <li><strong>IDE:</strong> IntelliJ, VS Code</li>
             <li><strong>Git:</strong> GitHub, GitLab</li>
             <li><strong>CAD:</strong> Fusion 360, Blender</li>
-            <li><strong>Eng:</strong> PCB Design, 3D Print</li>
+            <li><strong>Eng:</strong> PCB Design, 3D Printing</li>
         </ul>
     </section>
 
@@ -327,13 +328,13 @@
         <ul class="grid-list">
             <li><strong>CPU:</strong> Ryzen 5 5600</li>
             <li><strong>GPU:</strong> MSI RTX 3060 12GB</li>
-            <li><strong>RAM:</strong> 32GB DDR4-3600 RGB</li>
-            <li><strong>Cooler:</strong> ID-COOLING Liquid</li>
+            <li><strong>RAM:</strong> 32GB DDR4-3600 T-force Delta 2x16GB</li>
+            <li><strong>Cooler:</strong> ID-COOLING Frostflow X 240</li>
             <li><strong>SSD 1:</strong> 2TB Samsung 990 EVO+</li>
             <li><strong>SSD 2:</strong> 512GB Sabrent Rocket</li>
             <li><strong>MoBo:</strong> Asus PRIME B550-PLUS</li>
             <li><strong>Case:</strong> Asus TUF GT502</li>
-            <li><strong>PSU:</strong> 1000W Gold Modular</li>
+            <li><strong>PSU:</strong> Be Quiet Pure Power 12M 1000W</li>
             <li><strong>Mic:</strong> FIFINE T669</li>
             <li><strong>Headphones:</strong> Audio-Technica ATH-M20x</li>
             <li><strong>Display:</strong> AOC 24G4 (180 Hz)</li>
@@ -358,6 +359,18 @@
                 <small>Main Mod Developer.</small>
             </li>
             <li>
+                <strong style="font-size: 1.1rem;">Poppy Playtime Together Again</strong> 
+                <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
+                <br>
+                <small>Main Mod Developer & Voice Actor.</small>
+            </li>
+            <li>
+                <strong style="font-size: 1.1rem;">FNaF: The Pizzeria Franchise Return</strong> 
+                <a href="https://www.youtube.com/@CsaNvva" target="_blank" class="tag">OmazMZ</a>
+                <br>
+                <small>Partnered Mod Developer & Voice Actor.</small>
+            </li>
+            <li>
                 <a href="https://youtube.com/playlist?list=PLpglIuWgsORG_42_OYNX0RPqHPEMdiS8d&si=O6f2JAPJGe6IAlYI" target="_blank" class="project-link">
                     Fredbear and Friends
                 </a> 
@@ -368,6 +381,7 @@
             <li style="opacity: 0.7; border-style: dashed;">
                 <span style="font-size: 1.1rem;">[REDACTED]</span> 
                 <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
+                <a href="https://youtube.com/@darkdogplayz3793?si=U5-Xx9KE0doy_Vf9" target="_blank" class="tag">Darkdogplayz</a>
                 <br>
                 <small><em>3x Unannounced Projects currently in development (NDA/Hidden).</em></small>
             </li>
@@ -376,7 +390,7 @@
 
     <section class="services">
         <h2>// Active Services</h2>
-        <div style="border-left: 2px solid #5CFFFF; padding-left: 15px; margin-bottom: 20px;">
+        <div style="border-left: 2px solid var(--term-glow); padding-left: 15px; margin-bottom: 20px;">
             <p>
                 <strong style="font-size: 1.2rem;">Custom Minecraft Mod (Java)</strong> 
                 <span class="tag">OPEN</span>
@@ -394,8 +408,9 @@
     <section class="music">
         <h2>// Audio Stream :3</h2>
         <iframe style="border-radius:12px" 
-            src="https://open.spotify.com/embed/track/1qJlt8JfqreKtKKyZ3sYxN?utm_source=generator" 
+            src="https://open.spotify.com/track/0EaimQYtVqXWvDYVgpGEza?utm_source=generator" 
             width="100%" height="152" frameborder="0" 
+            title="When stuck, come here for a hint in the upcoming lore for one of the series I work on—or maybe a tease of a future project ;3"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
             loading="lazy">
         </iframe>
