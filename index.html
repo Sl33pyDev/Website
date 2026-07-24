@@ -16,7 +16,40 @@
             --panel-bg: rgba(10, 3, 18, 0.95); /* deep purple panel */
             --border-color: #330046; /* dark purple border */
         }
+        /* Cancelled Project State */
+.project-list li.is-cancelled {
+    border-color: #4a0010; /* Dark red border */
+    background: rgba(30, 0, 5, 0.4);
+    opacity: 0.7;
+}
 
+.project-list li.is-cancelled:hover {
+    border-color: #ff3333;
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.15);
+    transform: translateX(5px);
+}
+
+.is-cancelled .project-link,
+.is-cancelled strong {
+    text-decoration: line-through;
+    color: #887a99; /* Dimmed text */
+}
+
+/* Cancelled Badge */
+.badge-cancelled {
+    background-color: #ff3333;
+    color: #070006;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none !important; /* Prevents inheriting the strikethrough */
+    letter-spacing: 1px;
+}
         body {
             background-color: var(--bg-color);
             color: var(--term-green);
@@ -370,22 +403,27 @@
     <section class="projects">
         <h2>// Active Processes (Projects)</h2>
         <ul class="project-list">
-            <li>
+            <!-- MNaF Project -->
+            <li class="is-cancelled">
                 <a href="https://youtube.com/playlist?list=PLar8otDrQ_UdwIbmPXHeQsFwZYc0kdTun&si=ozwA1xLQ0-Vn7odL" target="_blank" class="project-link">
                     MNaF (The Flipside)
                 </a> 
+                <span class="badge-cancelled">CANCELLED</span>
                 <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
                 <br>
                 <small>Main Mod Developer & Voice Actor.</small>
             </li>
+
             <li>
                 <strong style="font-size: 1.1rem;">Timelord Tales</strong> 
                 <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
                 <br>
                 <small>Main Mod Developer.</small>
             </li>
-            <li>
+            <!-- Poppy Playtime Project -->
+            <li class="is-cancelled">
                 <strong style="font-size: 1.1rem;">Poppy Playtime Together Again</strong> 
+                <span class="badge-cancelled">CANCELLED</span>
                 <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
                 <br>
                 <small>Main Mod Developer & Voice Actor.</small>
