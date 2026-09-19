@@ -10,15 +10,15 @@
     
     <style>
         :root {
-            --bg-color: #070006; /* very dark purple/near-black */
-            --term-green: #E6D9FF; /* soft lavender primary text */
-            --term-glow: #9900FF; /* calming soft purple accent */
-            --panel-bg: rgba(10, 3, 18, 0.95); /* deep purple panel */
-            --border-color: #330046; /* dark purple border */
+            --bg-color: #070006; 
+            --term-green: #E6D9FF; 
+            --term-glow: #9900FF; 
+            --panel-bg: rgba(10, 3, 18, 0.95); 
+            --border-color: #330046; 
         }
-        /* Cancelled Project State */
+        
 .project-list li.is-cancelled {
-    border-color: #4a0010; /* Dark red border */
+    border-color: #4a0010; 
     background: rgba(30, 0, 5, 0.4);
     opacity: 0.7;
 }
@@ -32,10 +32,10 @@
 .is-cancelled .project-link,
 .is-cancelled strong {
     text-decoration: line-through;
-    color: #887a99; /* Dimmed text */
+    color: #887a99; 
 }
 
-/* Cancelled Badge */
+
 .badge-cancelled {
     background-color: #ff3333;
     color: #070006;
@@ -47,7 +47,7 @@
     box-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
     display: inline-block;
     vertical-align: middle;
-    text-decoration: none !important; /* Prevents inheriting the strikethrough */
+    text-decoration: none !important; 
     letter-spacing: 1px;
 }
         body {
@@ -61,7 +61,7 @@
             background-size: 100% 2px, 3px 100%;
         }
 
-        /* Scanline Animation */
+        
         body::before {
             content: " ";
             display: block;
@@ -91,7 +91,7 @@
             letter-spacing: 2px;
         }
 
-        /* Typing cursor effect */
+        
         .cursor {
             display: inline-block;
             width: 10px;
@@ -109,7 +109,7 @@
             opacity: 0.9;
         }
 
-        /* Main Container Styling */
+        
         section {
             max-width: 900px;
             margin: 2rem auto;
@@ -136,7 +136,7 @@
             font-size: 1.4rem;
         }
 
-        /* Grid Layouts for Specs */
+        
         .grid-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -155,7 +155,7 @@
             border-left: 2px solid var(--term-glow);
         }
 
-        /* Project List Styling */
+        
         .project-list {
             list-style: none;
             padding: 0;
@@ -174,7 +174,7 @@
             transform: translateX(5px);
         }
 
-        /* Clickable Project Titles */
+        
         .project-link {
             color: var(--term-green);
             text-decoration: none;
@@ -190,7 +190,7 @@
             border-bottom: 1px solid var(--term-glow);
         }
 
-        /* Studio Tags (Now Clickable) */
+        
         a.tag {
             background-color: var(--border-color);
             color: var(--term-glow);
@@ -212,7 +212,7 @@
             cursor: pointer;
         }
         
-        /* Non-clickable tag fallback */
+        
         span.tag {
             background-color: var(--border-color);
             color: var(--term-glow);
@@ -224,7 +224,7 @@
             vertical-align: middle;
         }
 
-        /* Social Buttons */
+        
         .social-grid {
             display: flex;
             gap: 1rem;
@@ -255,7 +255,7 @@
             transform: translateY(-2px);
         }
 
-        /* Brand Colors */
+        
         .discord-btn { background-color: #5865F2; border-color: #5865F2; color: white; }
         .discord-btn:hover { color: #5865F2; background-color: transparent; box-shadow: 0 0 15px #5865F2; }
 
@@ -268,7 +268,7 @@
         .email-btn { background-color: #20B2AA; border-color: #20B2AA; color: white; }
         .email-btn:hover { color: #20B2AA; background-color: transparent; box-shadow: 0 0 15px #20B2AA; }
 
-        /* Commission Button */
+       
         .btn-commission {
             background-color: var(--term-glow);
             color: #050505;
@@ -289,7 +289,7 @@
             box-shadow: 0 0 15px rgba(153,0,255,0.45);
         }
 
-        /* Hover Hint Text */
+      
         h2 {
             position: relative;
             display: inline-block;
@@ -315,7 +315,7 @@
             opacity: 0.6;
         }
 
-        /* Footer Time */
+       
         .time-display {
             text-align: right;
             font-size: 0.9rem;
@@ -328,7 +328,7 @@
 
     <header>
         <h1>Sl33py's Terminal<span class="cursor">_</span></h1>
-        <p>Full Stack Developer | Cosplay Artist</p>
+        <p>Developer | Cosplay Artist</p>
     </header>
 
     <section class="connect" style="text-align: center;">
@@ -353,8 +353,8 @@
     </section>
 
     <section class="intro">
-        <h2>// Mission Statement</h2>
-        <p>Welcome to my portfolio. I am a developer and hardware engineer. I blend software engineering (Java, C++) with physical hardware design (PCBs, Robotics) and Cosplaying.</p>
+        <h2>// Statement</h2>
+        <p>Welcome to my portfolio. I am a developer and hardware engineer. I work with a mix of software engineering (Java, C++) with physical hardware design (PCBs, Robotics) and Cosplaying.</p>
         <p>Currently enrolled in the <strong>Google Developer Premium Program</strong> and <strong>Boot.dev</strong>.</p>
     </section>
 
@@ -378,7 +378,7 @@
             <li><strong>IDE:</strong> IntelliJ, VS Code</li>
             <li><strong>Git:</strong> GitHub, GitLab</li>
             <li><strong>CAD:</strong> Fusion 360, Blender</li>
-            <li><strong>Eng:</strong> PCB Design, 3D Printing</li>
+            <li><strong>Eng:</strong> EasyEDA Pro, Anycubic</li>
         </ul>
     </section>
 
@@ -491,15 +491,12 @@
     </section>
 
     <script>
-        // Display Pacific Time (PT)
         function updatePacificTime() {
             const now = new Date();
             let utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-            // PDT (-7) / PST (-8) Logic
             let pacificOffset = -7; 
             let month = now.getMonth();
             if (month < 2 || month > 10) pacificOffset = -8; 
-            
             let pacific = new Date(utc + (3600000 * pacificOffset));
             document.getElementById("localTime").textContent = pacific.toLocaleString('en-US', {
                 hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
