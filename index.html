@@ -4,7 +4,7 @@
     <meta name="google-site-verification" content="6WBgqSPRDheL16UBGPW7qHxFQmQ7x0hsVZLyVi3OLiQ" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sl33py's Terminal // System Online</title>
+    <title>Sl33py's Terminal</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -17,39 +17,6 @@
             --border-color: #330046; 
         }
         
-.project-list li.is-cancelled {
-    border-color: #4a0010; 
-    background: rgba(30, 0, 5, 0.4);
-    opacity: 0.7;
-}
-
-.project-list li.is-cancelled:hover {
-    border-color: #ff3333;
-    box-shadow: 0 0 15px rgba(255, 51, 51, 0.15);
-    transform: translateX(5px);
-}
-
-.is-cancelled .project-link,
-.is-cancelled strong {
-    text-decoration: line-through;
-    color: #887a99; 
-}
-
-
-.badge-cancelled {
-    background-color: #ff3333;
-    color: #070006;
-    padding: 2px 8px;
-    font-size: 0.75rem;
-    border-radius: 4px;
-    margin-left: 8px;
-    font-weight: bold;
-    box-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
-    display: inline-block;
-    vertical-align: middle;
-    text-decoration: none !important; 
-    letter-spacing: 1px;
-}
         body {
             background-color: var(--bg-color);
             color: var(--term-green);
@@ -61,7 +28,6 @@
             background-size: 100% 2px, 3px 100%;
         }
 
-        
         body::before {
             content: " ";
             display: block;
@@ -91,7 +57,6 @@
             letter-spacing: 2px;
         }
 
-        
         .cursor {
             display: inline-block;
             width: 10px;
@@ -109,7 +74,6 @@
             opacity: 0.9;
         }
 
-        
         section {
             max-width: 900px;
             margin: 2rem auto;
@@ -134,9 +98,10 @@
             padding-bottom: 0.5rem;
             text-transform: uppercase;
             font-size: 1.4rem;
+            position: relative;
+            display: inline-block;
         }
 
-        
         .grid-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -155,11 +120,7 @@
             border-left: 2px solid var(--term-glow);
         }
 
-        
-        .project-list {
-            list-style: none;
-            padding: 0;
-        }
+        .project-list { list-style: none; padding: 0; }
         
         .project-list li {
             background: rgba(0, 0, 0, 0.3);
@@ -174,14 +135,50 @@
             transform: translateX(5px);
         }
 
+        .project-list li.is-cancelled {
+            border-color: #4a0010; 
+            background: rgba(30, 0, 5, 0.4);
+            opacity: 0.7;
+        }
+
+        .project-list li.is-cancelled:hover {
+            border-color: #ff3333;
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.15);
+            transform: translateX(5px);
+        }
+
+        .is-cancelled .project-link,
+        .is-cancelled strong {
+            text-decoration: line-through;
+            color: #887a99; 
+        }
+
+        .badge-cancelled, .badge-hold {
+            color: #070006;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: bold;
+            display: inline-block;
+            vertical-align: middle;
+            text-decoration: none !important; 
+            letter-spacing: 1px;
+        }
         
+        .badge-cancelled { background-color: #ff3333; box-shadow: 0 0 8px rgba(255, 51, 51, 0.6); }
+        .badge-hold { background-color: #ffaa00; box-shadow: 0 0 8px rgba(255, 170, 0, 0.6); }
+
         .project-link {
             color: var(--term-green);
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1rem;
-            border-bottom: 1px var(--term-glow);
+            border-bottom: 1px solid transparent;
             transition: all 0.2s;
+            cursor: pointer;
+            margin-bottom: 8px;
+            display: inline-block;
         }
 
         .project-link:hover {
@@ -190,19 +187,19 @@
             border-bottom: 1px solid var(--term-glow);
         }
 
-        
-        a.tag {
+        a.tag, span.tag {
             background-color: var(--border-color);
             color: var(--term-glow);
-            padding: 2px 8px;
+            padding: 4px 8px;
             font-size: 0.75rem;
             border-radius: 4px;
-            margin-left: 8px;
+            margin-right: 6px;
             border: 1px solid var(--term-glow);
             vertical-align: middle;
             text-decoration: none;
             transition: background 0.3s, color 0.3s;
             display: inline-block;
+            margin-bottom: 6px;
         }
 
         a.tag:hover {
@@ -211,20 +208,30 @@
             box-shadow: 0 0 10px var(--term-glow);
             cursor: pointer;
         }
-        
-        
-        span.tag {
-            background-color: var(--border-color);
-            color: var(--term-glow);
-            padding: 2px 8px;
-            font-size: 0.75rem;
-            border-radius: 4px;
-            margin-left: 8px;
-            border: 1px solid var(--term-glow);
-            vertical-align: middle;
+
+        .icon-3d {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            vertical-align: text-bottom;
+            margin-right: 4px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.6));
         }
 
-        
+        .icon-mc { background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 1L15 4.5L8 8L1 4.5L8 1Z' fill='%2358D68D'/%3E%3Cpath d='M1 4.5L8 8V15L1 11.5V4.5Z' fill='%238D6E63'/%3E%3Cpath d='M15 4.5L8 8V15L15 11.5V4.5Z' fill='%235D4037'/%3E%3Cpath d='M1 4.5L8 8V9.5L6.5 8L5 9.5L3.5 8L1 9.5V4.5Z' fill='%232ECC71'/%3E%3Cpath d='M15 4.5L8 8V9.5L9.5 8L11 9.5L12.5 8L15 9.5V4.5Z' fill='%2327AE60'/%3E%3C/svg%3E"); }
+        .icon-rbx { background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(16, 16) rotate(15) translate(-16, -16)'%3E%3Cpath d='M 6 10 L 26 10 L 26 30 L 6 30 Z' fill='%23922B21' /%3E%3Cpath d='M 4 4 L 24 4 L 24 24 L 4 24 Z' fill='%23E74C3C' /%3E%3Cpath d='M 10 10 L 18 10 L 18 18 L 10 18 Z' fill='%23070006' /%3E%3Cpath d='M 12 12 L 20 12 L 20 20 L 12 20 Z' fill='%23922B21' /%3E%3Cpath d='M 10 10 L 18 10 L 18 18 L 10 18 Z' fill='%23070006' /%3E%3C/g%3E%3C/svg%3E"); }
+        .icon-series { background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1' y='5' width='14' height='10' rx='2' fill='%23117A65'/%3E%3Crect x='1' y='3' width='14' height='10' rx='2' fill='%231ABC9C'/%3E%3Cpath d='M6 5.5 L11 8 L6 10.5 Z' fill='%23FFFFFF'/%3E%3C/svg%3E"); }
+        .icon-game { background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 8 C1 13, 5 14, 5 14 L6 12 L10 12 L11 14 C11 14, 15 13, 15 8 C15 4, 12 3, 8 3 C4 3, 1 4, 1 8 Z' fill='%2321618C'/%3E%3Cpath d='M1 6 C1 11, 5 12, 5 12 L6 10 L10 10 L11 12 C11 12, 15 11, 15 6 C15 2, 12 1, 8 1 C4 1, 1 2, 1 6 Z' fill='%233498DB'/%3E%3Cpath d='M3 5 H4 V4 H5 V5 H6 V6 H5 V7 H4 V6 H3 V5 Z' fill='%23FFFFFF'/%3E%3Ccircle cx='11.5' cy='4.5' r='1' fill='%23FFFFFF'/%3E%3Ccircle cx='13' cy='6' r='1' fill='%23FFFFFF'/%3E%3C/svg%3E"); }
+        .icon-personal { background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 1L14 6H2L8 1Z' fill='%23D2B4DE'/%3E%3Cpath d='M8 1L11 6H5L8 1Z' fill='%23EBDEF0'/%3E%3Cpath d='M2 6L8 15L14 6H2Z' fill='%238E44AD'/%3E%3Cpath d='M5 6L8 15L11 6H5Z' fill='%23AF7AC5'/%3E%3C/svg%3E"); }
+
+        .tag-mc { border-color: #27AE60 !important; color: #58D68D !important; background: rgba(39, 174, 96, 0.15) !important; }
+        .tag-series { border-color: #1ABC9C !important; color: #1ABC9C !important; background: rgba(26, 188, 156, 0.15) !important; }
+        .tag-game { border-color: #3498DB !important; color: #3498DB !important; background: rgba(52, 152, 219, 0.15) !important; }
+        .tag-rbx { border-color: #C0392B !important; color: #E74C3C !important; background: rgba(231, 76, 60, 0.15) !important; }
+        .tag-personal { border-color: #8E44AD !important; color: #D2B4DE !important; background: rgba(142, 68, 173, 0.15) !important; }
+
         .social-grid {
             display: flex;
             gap: 1rem;
@@ -246,6 +253,7 @@
             transition: all 0.3s;
             text-transform: uppercase;
             font-size: 0.9rem;
+            cursor: pointer;
         }
 
         .btn-social:hover {
@@ -255,7 +263,6 @@
             transform: translateY(-2px);
         }
 
-        
         .discord-btn { background-color: #5865F2; border-color: #5865F2; color: white; }
         .discord-btn:hover { color: #5865F2; background-color: transparent; box-shadow: 0 0 15px #5865F2; }
 
@@ -268,7 +275,6 @@
         .email-btn { background-color: #20B2AA; border-color: #20B2AA; color: white; }
         .email-btn:hover { color: #20B2AA; background-color: transparent; box-shadow: 0 0 15px #20B2AA; }
 
-       
         .btn-commission {
             background-color: var(--term-glow);
             color: #050505;
@@ -289,12 +295,6 @@
             box-shadow: 0 0 15px rgba(153,0,255,0.45);
         }
 
-      
-        h2 {
-            position: relative;
-            display: inline-block;
-        }
-
         .hover-hint {
             position: absolute;
             left: 0;
@@ -311,16 +311,82 @@
             letter-spacing: normal;
         }
 
-        h2:hover .hover-hint {
-            opacity: 0.6;
-        }
+        h2:hover .hover-hint { opacity: 0.6; }
 
-       
         .time-display {
             text-align: right;
             font-size: 0.9rem;
             color: #555;
             margin-top: -10px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background-color: var(--panel-bg);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid var(--term-glow);
+            width: 85%;
+            max-width: 800px;
+            border-radius: 4px;
+            box-shadow: 0 0 25px rgba(153,0,255,0.3);
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            color: var(--term-green);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover { color: #ff3333; }
+
+        .video-item {
+            margin-bottom: 2rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .video-item h3 { margin-top: 0; color: #fff; font-size: 1.2rem; }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .warning-box {
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 3px solid var(--term-glow);
+            padding: 12px;
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -328,7 +394,7 @@
 
     <header>
         <h1>Sl33py's Terminal<span class="cursor">_</span></h1>
-        <p>Developer | Cosplay Artist</p>
+        <p>Developer | Hardware Engineer | Cosplay Artist</p>
     </header>
 
     <section class="connect" style="text-align: center;">
@@ -354,15 +420,15 @@
 
     <section class="intro">
         <h2>// Statement</h2>
-        <p>Welcome to my portfolio. I am a developer and hardware engineer. I work with a mix of software engineering (Java, C++) with physical hardware design (PCBs, Robotics) and Cosplaying.</p>
-        <p>Currently enrolled in the <strong>Google Developer Premium Program</strong> and <strong>Boot.dev</strong>.</p>
+        <p>Welcome to my portfolio. I work with a mix of software engineering (Java, C++) with physical hardware design (PCBs, Robotics) and Cosplaying.</p>
+        <p>Currently training through the <strong>Ford ACE Program</strong>, the <strong>Google Developer Premium Program</strong>, and <strong>Boot.dev</strong>.</p>
     </section>
 
     <section class="profile">
         <div class="time-display">Local Time: <span id="localTime">Loading...</span></div>
         <h2>// System Specs (About Me)</h2>
         <p><strong>User:</strong> "Sl33py_Dev"<br>
-        <strong>Pronouns:</strong> He/Him(Any Really)</p>
+        <strong>Pronouns:</strong> He/Him (Any Really)</p>
         
         <h3>Languages</h3>
         <ul class="grid-list">
@@ -403,59 +469,90 @@
     <section class="projects">
         <h2>// Active Processes (Projects)</h2>
         <ul class="project-list">
-            <!-- MNaF Project -->
-            <li class="is-cancelled">
-                <a href="https://youtube.com/playlist?list=PLar8otDrQ_UdwIbmPXHeQsFwZYc0kdTun&si=ozwA1xLQ0-Vn7odL" target="_blank" class="project-link">
-                    MNaF (The Flipside)
-                </a> 
-                <span class="badge-cancelled">CANCELLED</span>
-                <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
+            <li>
+                <a onclick="openSeriesModal('manorOfMystery', 'Manor Of Mystery')" class="project-link">
+                    Manor Of Mystery <i class="fas fa-play-circle" style="font-size: 0.9rem; margin-left: 5px;"></i>
+                </a><br>
+                <span class="tag tag-mc"><i class="icon-3d icon-mc"></i> MC</span>
+                <span class="tag tag-series"><i class="icon-3d icon-series"></i> Series</span>
+                <a href="https://youtube.com/@darkdogplayz3793" target="_blank" class="tag">Darkdogplayz</a>
                 <br>
-                <small>Main Mod Developer & Voice Actor.</small>
+                <small style="display: block; margin-top: 5px;">Main Mod Developer.</small>
             </li>
 
             <li>
-                <strong style="font-size: 1.1rem;">Timelord Tales</strong> 
-                <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
-                <br>
-                <small>Main Mod Developer.</small>
-            </li>
-            <!-- Poppy Playtime Project -->
-            <li class="is-cancelled">
-                <strong style="font-size: 1.1rem;">Poppy Playtime Together Again</strong> 
-                <span class="badge-cancelled">CANCELLED</span>
-                <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
-                <br>
-                <small>Main Mod Developer & Voice Actor.</small>
-            </li>
-            <li>
-                <strong style="font-size: 1.1rem;">FNaF: The Pizzeria Franchise Return</strong> 
+                <a onclick="openSeriesModal('endlessLabyrinth', 'FNaF: Endless Labyrinth')" class="project-link">
+                    FNaF: Endless Labyrinth <i class="fas fa-play-circle" style="font-size: 0.9rem; margin-left: 5px;"></i>
+                </a><br>
+                <span class="tag tag-mc"><i class="icon-3d icon-mc"></i> MC</span>
+                <span class="tag tag-series"><i class="icon-3d icon-series"></i> Series</span>
                 <a href="https://www.youtube.com/@CsaNvva" target="_blank" class="tag">OmazMZ</a>
                 <br>
-                <small>Co Mod Developer & Voice Actor.</small>
+                <small style="display: block; margin-top: 5px;">Main Mod Developer & Voice Actor.</small>
             </li>
+
             <li>
-                <strong style="font-size: 1.1rem;">FNaF: Endless Labyrinth</strong> 
+                <a onclick="openSeriesModal('fredbearAndFriends', 'Fredbear and Friends')" class="project-link">
+                    Fredbear and Friends <i class="fas fa-play-circle" style="font-size: 0.9rem; margin-left: 5px;"></i>
+                </a><br>
+                <span class="tag tag-mc"><i class="icon-3d icon-mc"></i> MC</span>
+                <span class="tag tag-series"><i class="icon-3d icon-series"></i> Series</span>
+                <a href="https://youtube.com/@darkdogplayz3793" target="_blank" class="tag">Darkdogplayz</a>
+                <br>
+                <small style="display: block; margin-top: 5px;">Main Mod Developer & Backup Voice Actor.</small>
+            </li>
+
+            <li>
+                <strong style="font-size: 1.1rem; display: block; margin-bottom: 8px;">Bringing Back The 80s</strong> 
+                <span class="tag tag-rbx"><i class="icon-3d icon-rbx"></i> RBX</span>
+                <span class="tag tag-personal"><i class="icon-3d icon-personal"></i> Personal</span>
+                <span class="tag tag-game"><i class="icon-3d icon-game"></i> Game</span>
+                <a href="https://youtube.com/@Sl33py_Dev" target="_blank" class="tag">Sl33py_Dev</a>
+                <br>
+                <small style="display: block; margin-top: 5px;">Lead Developer. A mix of crime scene cleaner and house flipper with psychological horror elements.</small>
+            </li>
+
+            <li>
+                <strong style="font-size: 1.1rem; display: inline-block; margin-bottom: 8px;">FNaF: The Pizzeria Franchise Return</strong> 
+                <span class="badge-hold">ON HOLD</span><br>
+                <span class="tag tag-mc"><i class="icon-3d icon-mc"></i> MC</span>
+                <span class="tag tag-series"><i class="icon-3d icon-series"></i> Series</span>
                 <a href="https://www.youtube.com/@CsaNvva" target="_blank" class="tag">OmazMZ</a>
                 <br>
-                <small>Co Mod Developer & Voice Actor.</small>
+                <small style="display: block; margin-top: 5px;">Main Mod Developer & Voice Actor.</small>
             </li>
-            <li>
-                <a href="https://youtube.com/playlist?list=PLpglIuWgsORG_42_OYNX0RPqHPEMdiS8d&si=O6f2JAPJGe6IAlYI" target="_blank" class="project-link">
-                    Fredbear and Friends
-                </a> 
-                <a href="https://youtube.com/@darkdogplayz3793?si=U5-Xx9KE0doy_Vf9" target="_blank" class="tag">Darkdogplayz</a>
-                <br>
-                <small>Main Mod Developer & Backup Voice Actor.</small>
-            </li>
+
             <li style="opacity: 0.7; border-style: dashed;">
-                <span style="font-size: 1.1rem;">[REDACTED]</span> 
-                <a href="https://youtube.com/@flipside_production?si=8-W7V5b1oAq0kQwY" target="_blank" class="tag">Flipside Productions</a>
-                <a href="https://youtube.com/@darkdogplayz3793?si=U5-Xx9KE0doy_Vf9" target="_blank" class="tag">Darkdogplayz</a>
+                <span style="font-size: 1.1rem; display: block; margin-bottom: 8px;">[REDACTED]</span> 
+                <span class="tag tag-series"><i class="icon-3d icon-series"></i> Series</span>
                 <a href="https://www.youtube.com/@CsaNvva" target="_blank" class="tag">OmazMZ</a>
                 <a href="https://youtube.com/@blue_lunarmoon" target="_blank" class="tag">Lunar Blue</a>
                 <br>
-                <small><em>4x Unannounced Projects currently in development (Hidden).</em></small>
+                <small style="display: block; margin-top: 5px;"><em>2x Unannounced Projects currently in development (Hidden).</em></small>
+            </li>
+
+            <li class="is-cancelled">
+                <a onclick="openCancelModal()" class="project-link">MNaF (The Flipside)</a><br>
+                <span class="tag tag-mc"><i class="icon-3d icon-mc"></i> Minecraft</span>
+                <span class="badge-cancelled">Flipside Productions - CANCELLED</span>
+                <br>
+                <small style="display: block; margin-top: 5px;">Former Main Mod Developer & Voice Actor. <a onclick="openCancelModal()" style="color: #ff3333; cursor: pointer; text-decoration: underline;">[Reason for Cancellation]</a></small>
+            </li>
+
+            <li class="is-cancelled">
+                <a onclick="openCancelModal()" class="project-link">Timelord Tales</a><br>
+                <span class="tag tag-mc"><i class="icon-3d icon-mc"></i> Minecraft</span>
+                <span class="badge-cancelled">Flipside Productions - CANCELLED</span>
+                <br>
+                <small style="display: block; margin-top: 5px;">Former Main Mod Developer. <a onclick="openCancelModal()" style="color: #ff3333; cursor: pointer; text-decoration: underline;">[Reason for Cancellation]</a></small>
+            </li>
+
+            <li class="is-cancelled">
+                <a onclick="openCancelModal()" class="project-link">Poppy Playtime Together Again</a><br>
+                <span class="tag tag-mc"><i class="icon-3d icon-mc"></i> Minecraft</span>
+                <span class="badge-cancelled">Flipside Productions - CANCELLED</span>
+                <br>
+                <small style="display: block; margin-top: 5px;">Former Main Mod Developer & Voice Actor. <a onclick="openCancelModal()" style="color: #ff3333; cursor: pointer; text-decoration: underline;">[Reason for Cancellation]</a></small>
             </li>
         </ul>
     </section>
@@ -465,11 +562,11 @@
         <div style="border-left: 2px solid var(--term-glow); padding-left: 15px; margin-bottom: 20px;">
             <p>
                 <strong style="font-size: 1.2rem;">Custom Minecraft Mod (Java)</strong> 
-                <span class="tag">OPEN</span>
+                <span class="tag tag-mc" style="margin-left: 10px;"><i class="icon-3d icon-mc"></i> OPEN</span>
             </p>
-            <p>I will code a custom Fabric/Forge mod based on your ideas. Base price covers simple items/blocks.</p>
+            <p>I will make a minecraft mod based on your ideas. Price varies by complexity.</p>
             <p style="font-size: 0.9rem; opacity: 0.8;">
-                <em>Add-ons available: Source Code ($10), Custom License ($5).</em>
+                <strong>Note:</strong> I will not make mods that are offensive, discriminatory, or violate any laws. I reserve the right to refuse service for any reason.
             </p>
             <a href="https://ko-fi.com/c/08232eab28" target="_blank" class="btn-commission">
                 <i class="fas fa-shopping-cart"></i> Order on Ko-fi ($15+)
@@ -490,13 +587,52 @@
         </iframe>
     </section>
 
+    <div id="videoModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeSeriesModal()">&times;</span>
+            <h2 id="modalTitle" style="border-bottom: 1px solid var(--term-glow); padding-bottom: 10px; margin-top: 0; display: block;">Series Title</h2>
+            <div id="videoList"></div>
+        </div>
+    </div>
+
+    <div id="cancelModal" class="modal-overlay">
+        <div class="modal-content" style="border-color: #ff3333; box-shadow: 0 0 25px rgba(255,51,51,0.2);">
+            <span class="close-btn" onclick="closeCancelModal()">&times;</span>
+            <h2 style="color: #ff3333; border-bottom: 1px dashed #ff3333; margin-top: 0;">// TERMINATION REPORT</h2>
+            <div id="cancelStep1">
+                <div class="warning-box" style="border-left-color: #ff3333; background: rgba(50,0,0,0.3); color: #ffcccc;">
+                    <strong>[CONTENT WARNING]</strong> This section addresses severe allegations of abuse, harassment, and Transphobia by former employeer Flipside Productions.
+                </div>
+                <p>I have officially ceased all involvement with <strong>Flipside Productions</strong> (MNaF, Timelord Tales, Poppy Playtime Together Again) and its former management (Semi).</p>
+                <p>This decision was made following the emergence of serious allegations of misconduct against management, including sexual harassment, manipulation, and transphobia(FTM).</p>
+                <p>My Part of the story is while working with Flipside Productions, I have seen multiple instances of these issues. Namely, When i first joined the team he expressed information about old drama from a smp he was apart of relating to SH and manipulation. Later, I noticed patterns of him having a weird thing with the waifu gamer sups cups and Very fan serviced feminine game characters. Eventually i noticed characters he plays are either children wanting to be overly mommy'd or overly sexualized or sensual. But the main thing that directly impacts me is the Professional Sabotage, Story short i had developers from The Fnaf mod one of the biggest fnaf minecraft mod teams attempt to reach out to me via SemiTransparent_/Flipside Productions, He didnt bother to contact me in any form about the matter but instead told them im not interested or looking for work or work with fabric which they were trying to hire me for their fabric port, in which this situation i wasnt aware of till a week later when he so casually mentioned after talking about bragging about the assets and functions in the mod i made for him FSUTILS.</p>
+                <p>If anyone in the community has relevant information or needs to share their experiences or have questions, please <a href="mailto:sl33pydev@gmail.com" style="color: var(--term-green); font-weight: bold; text-decoration: underline;">contact me via email</a>.</p>
+                
+                <button onclick="showCancelStep2()" class="btn-social" style="background-color: #4a0010; border-color: #ff3333; color: #ffcccc; margin-top: 20px; width: 100%; justify-content: center;">
+                    <i class="fas fa-exclamation-triangle"></i> Proceed to External Document
+                </button>
+            </div>
+
+            <div id="cancelStep2" style="display: none;">
+                <div class="warning-box" style="border-left-color: #ffaa00; background: rgba(50,30,0,0.3); color: #ffdd99;">
+                    <strong>[ADDITIONAL WARNING]</strong> The following external document contains detailed accounts from the victims regarding these offenses (including SA/SH). Viewer discretion is strongly advised.
+                </div>
+                <p>To read the full account provided by the victims, please proceed to the document.</p>
+                <a href="https://docs.google.com/document/d/1pHVid7WChI7XTEj6AKVUJpiKnEsG4AgehmOpK_4a8Po/edit?usp=sharing" target="_blank" class="btn-social" style="background-color: #ff3333; border-color: #ff3333; color: #000; text-align: center; justify-content: center;">
+                    <i class="fas fa-external-link-alt"></i> Open External Document
+                </a>
+                <button onclick="hideCancelStep2()" class="btn-social" style="background-color: transparent; border: none; font-size: 0.8rem; margin-top: 10px; width: 100%; justify-content: center;">&larr; Go Back</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         function updatePacificTime() {
             const now = new Date();
             let utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-            let pacificOffset = -7; 
+            let pacificOffset = -7;
             let month = now.getMonth();
-            if (month < 2 || month > 10) pacificOffset = -8; 
+            if (month < 2 || month > 10) pacificOffset = -8;
             let pacific = new Date(utc + (3600000 * pacificOffset));
             document.getElementById("localTime").textContent = pacific.toLocaleString('en-US', {
                 hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
@@ -504,7 +640,219 @@
         }
         setInterval(updatePacificTime, 1000);
         updatePacificTime();
+
+        const seriesData = {
+            manorOfMystery: {
+                playlists: [
+                    { title: "Playlist not made", url: "#" }
+                ],
+                episodes: [
+                    { 
+                        title: "Prolgue", 
+                        url: "https://www.youtube.com/embed/yj0HZSeJCfM", 
+                        notes: "I voiced here :3" 
+                    },
+                    { 
+                        title: "Manor Of Mystery Early intro look", 
+                        url: "https://www.youtube.com/embed/f5ouZ3Ihs8g", 
+                        notes: "Damn they messed me up in the pool" 
+                    }
+                ]
+            },
+            endlessLabyrinth: {
+                playlists: [
+                    { title: "Watch Full Playlist", url: "https://www.youtube.com/playlist?list=PLeYQuvlGh810" }
+                ],
+                episodes: [
+                    { 
+                        title: "Brand New Venture", 
+                        url: "https://www.youtube.com/embed/QfXMTala8oc", 
+                        notes: "I wasnt here lol" 
+                    },
+                    { 
+                        title: "ALAKAZAM!!", 
+                        url: "https://www.youtube.com/embed/bEKkLMby3AU", 
+                        notes: "I wasnt here either" 
+                    },
+                    { 
+                        title: "Freakish Discovery", 
+                        url: "https://www.youtube.com/embed/o6H2RkswfCo", 
+                        notes: "or here" 
+                    },
+                    { 
+                        title: "Helpy’s Problem..", 
+                        url: "https://www.youtube.com/embed/4-k3rKxxQXs", 
+                        notes: "Okay this one was funny, still wasnt here lol" 
+                    },
+                    { 
+                        title: "A Business Proposition", 
+                        url: "https://www.youtube.com/embed/wFw1iryv1HQ", 
+                        notes: "Big plus- wait a minute 1 million dollars? GIVE ME THAT PLUSHY JAY" 
+                    },
+                    { 
+                        title: "Sudden Changes", 
+                        url: "https://www.youtube.com/embed/kjl8E0CmVFM", 
+                        notes: 'Salis: "I was very tempted to walk out and work at the daycare or wherever else..." Anyway, I voiced in this and you can see all my work like the lighting system the datadiver and datapack the rolling doors and SOTM door.' 
+                    },
+                    { 
+                        title: "Kitchen Troubles", 
+                        url: "https://www.youtube.com/embed/YWRCLIQ721o", 
+                        notes: "This one was funny at the start but through out i was just a nerd ALSO MONTY WOULDNT GET OUT OF MY FACE" 
+                    }
+                ]
+            },
+            fredbearAndFriends: {
+                playlists: [
+                    { title: "Season 1 Playlist", url: "https://www.youtube.com/playlist?list=PLfNqwRsuXfrNk6Y56sm7y9apzcpJv3Mqe" },
+                    { title: "Season 2 Playlist", url: "https://www.youtube.com/playlist?list=PLfNqwRsuXfrMNYETPXVlFjYLjySIidbAl" }
+                ],
+                episodes: [
+                    { 
+                        title: "A New Location?!", 
+                        url: "https://www.youtube.com/embed/GP8u2aQzmys", 
+                        notes: "Wasnt around for S1 or this video" 
+                    },
+                    { 
+                        title: "Lost And Disgusted", 
+                        url: "https://www.youtube.com/embed/AcCCh9qA-GI", 
+                        notes: "Wasnt here either." 
+                    },
+                    { 
+                        title: "New Adjustments", 
+                        url: "https://www.youtube.com/embed/QNN1vo6hl6U", 
+                        notes: "Started as a temp backup VA for fredbear. This was pretty funny to do i was having fun with /item replace entity to put blocks on my head lol." 
+                    },
+                    { 
+                        title: "The Nightmares Within", 
+                        url: "https://www.youtube.com/embed/3iBULXVSi2M", 
+                        notes: "Didnt voice in this but i did body act and setup the pose for Shadow Mike" 
+                    },
+                    { 
+                        title: "RETURN OF THE FAZ-STEW!", 
+                        url: "https://www.youtube.com/embed/O_gqCR8NEHs", 
+                        notes: "Hey look at bonnies ears they are more detailed i wonder who did that? oh wait it was me lol. Also that def wasnt me in the oven at the start. Still gotta love fredbear being goofy and having a box on his head." 
+                    },
+                    { 
+                        title: "Chica!", 
+                        url: "https://www.youtube.com/embed/8bKgsmzY3q4", 
+                        notes: "Wasnt here what so ever fredbear was offline" 
+                    },
+                    { 
+                        title: "Grand Opening!", 
+                        url: "https://www.youtube.com/embed/CMwoer7PoUU", 
+                        notes: 'there was a lot that happened during the recording of this but we love fredbear "I wonder what would happen if i bit a kid" -Fredbear' 
+                    },
+                    { 
+                        title: "Rivals", 
+                        url: "https://www.youtube.com/embed/PuheKuAIYoY", 
+                        notes: "Fredbear was offline for this so i wasnt present for this one either." 
+                    },
+                    { 
+                        title: "Captain Foxy!", 
+                        url: "https://www.youtube.com/embed/PhaNfXGxOOg", 
+                        notes: "So many bloopers in this one, i was in the sails jumping around and sniping dark/mike with plastic balls i had to give everyone knockback resistance and resistance so they didnt die lol." 
+                    },
+                    { 
+                        title: "Claustrophobia", 
+                        url: "https://www.youtube.com/embed/yF8bjy8Y3rg", 
+                        notes: "No longer fredbear the original VA came back so last bit of me being fredbear unless they need a backup again." 
+                    },
+                    { 
+                        title: "Re-Model", 
+                        url: "https://www.youtube.com/embed/rSgoeJIWfsA", 
+                        notes: "Dev notes pending." 
+                    },
+                    { 
+                        title: "Night Fright!", 
+                        url: "https://www.youtube.com/embed/6dFyZgja8gg", 
+                        notes: "Dev notes pending." 
+                    },
+                    { 
+                        title: "A Couple Of Rats!", 
+                        url: "https://www.youtube.com/embed/tU71u1pK14I", 
+                        notes: "Dev notes pending." 
+                    }
+                ]
+            }
+        };
+
+        function openSeriesModal(seriesKey, seriesTitle) {
+            document.getElementById('modalTitle').innerText = seriesTitle;
+            const list = document.getElementById('videoList');
+            list.innerHTML = '';
+
+            const seriesInfo = seriesData[seriesKey];
+            const episodes = seriesInfo ? seriesInfo.episodes : [];
+            const playlists = seriesInfo ? seriesInfo.playlists : [];
+
+            if (playlists && playlists.length > 0) {
+                let playlistHTML = '<div style="margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color);">';
+                playlists.forEach(pl => {
+                    playlistHTML += `<a href="${pl.url}" target="_blank" class="btn-commission" style="margin-top: 0; margin-right: 10px; margin-bottom: 10px; font-size: 0.85rem;"><i class="fab fa-youtube"></i> ${pl.title}</a>`;
+                });
+                playlistHTML += '</div>';
+                list.innerHTML += playlistHTML;
+            }
+
+            if (episodes.length === 0) {
+                list.innerHTML += '<p style="color: #aaa; text-align: center; margin-top: 30px;">Video records currently unavailable for this process. Check back later.</p>';
+            } else {
+                episodes.forEach(ep => {
+                    list.innerHTML += `
+                        <div class="video-item">
+                            <h3>${ep.title}</h3>
+                            <div class="video-wrapper">
+                                <iframe src="${ep.url}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="warning-box" style="border-left-color: var(--term-glow); background: rgba(0,0,0,0.5); color: #ccc;"><strong>// Notes:</strong> ${ep.notes}</div>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('videoModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSeriesModal() {
+            document.getElementById('videoModal').style.display = 'none';
+            document.getElementById('videoList').innerHTML = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openCancelModal() {
+            document.getElementById('cancelStep1').style.display = 'block';
+            document.getElementById('cancelStep2').style.display = 'none';
+            document.getElementById('cancelModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCancelModal() {
+            document.getElementById('cancelModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function showCancelStep2() {
+            document.getElementById('cancelStep1').style.display = 'none';
+            document.getElementById('cancelStep2').style.display = 'block';
+        }
+
+        function hideCancelStep2() {
+            document.getElementById('cancelStep1').style.display = 'block';
+            document.getElementById('cancelStep2').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const vidModal = document.getElementById('videoModal');
+            const canModal = document.getElementById('cancelModal');
+
+            if (event.target === vidModal) {
+                closeSeriesModal();
+            }
+            if (event.target === canModal) {
+                closeCancelModal();
+            }
+        }
     </script>
 </body>
 </html>
-
